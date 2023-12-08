@@ -48,7 +48,7 @@ const TextSection = ({ text }: TextSectionProps) => {
 
 const UpdateSection = () => {
   return (
-    <section className="container left-14 absolute top-[57%] z-10">
+    <section className="hidden md:block container left-14 absolute top-[57%] z-10">
       <div className="border-[16px] border-black bg-white px-8 pt-3 pb-8 rounded-[50px] update">
         <div className="flex flex-col gap-8 rounded-[36px]">
           <div className="flex gap-3 items-center">

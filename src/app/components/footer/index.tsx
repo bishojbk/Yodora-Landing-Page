@@ -27,10 +27,10 @@ const FooterSection = () => {
     );
   };
   return (
-    <footer className="bg-white py-16">
+    <footer className="bg-white py-6  md:py-16">
       <div className="container">
         <div className="footer">
-          <div className="flex flex-col gap-16">
+          <div className="hidden md:flex flex-col gap-16">
             <Logo />
 
             <div className="flex gap-3">
@@ -40,7 +40,7 @@ const FooterSection = () => {
             </div>
           </div>
 
-          <div className="flex justify-between">
+          <div className="flex flex-col gap-6 md:gap-0 md:flex-row justify-between">
             <ListSection
               header="About"
               listOne="How it works"
@@ -65,6 +65,15 @@ const FooterSection = () => {
               listTwo="Report Abuse"
               listThree="Dispute a payment"
             />
+          </div>
+
+          <div className="flex flex-col items-center gap-4 md:hidden ">
+            <Logo />
+            <div className="flex gap-3">
+              <Facebook />
+              <Twitter />
+              <Instagram />
+            </div>
           </div>
         </div>
       </div>

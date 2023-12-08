@@ -20,8 +20,10 @@ const CreatorSection = () => {
     return (
       <div className="flex flex-col gap-4">
         <SvgComponent />
-        <span className="text-3xl text-black font-bold">{header}</span>
-        <p className="text-sm text-black w-9/12">{content}</p>
+        <span className="text-2xl md:text-3xl text-black font-bold">
+          {header}
+        </span>
+        <p className="text-base text-black w-9/12">{content}</p>
       </div>
     );
   };
@@ -29,25 +31,26 @@ const CreatorSection = () => {
   return (
     <section className="bg-white">
       <div className="container">
-        <div className="flex gap-24 justify-between py-16">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-24 md:justify-between md:py-16">
           <div className="flex flex-col gap-6">
-            <h1 className="text-6xl font-bold text-black leading-[114%]">
+            <h1 className="text-4xl md:text-6xl font-bold text-black leading-[114%]">
               Why become a creator?
             </h1>
 
-            <p className="text-sm text-black w-9/12">
+            <p className="text-base text-black md:w-9/12">
               Engage with your supporter and subscriber to sell your skills,
               knowledge and passions
             </p>
 
             <button
               title="Become a member"
-              className="border w-56 border-black py-4 px-8 rounded-full bg-black text-white hover:bg-gray-700"
+              className="border w-44 md:w-56 border-black py-3 px-4 text-sm md:text-base rounded-full bg-black text-white hover:bg-gray-700"
             >
               Become a member
             </button>
           </div>
-          <div className="grid grid-cols-2 gap-x-6 gap-y-20">
+
+          <div className="flex flex-col gap-y-12 md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-20">
             <GridSection
               svg={Engagement}
               header="Engagement"
@@ -73,11 +76,11 @@ const CreatorSection = () => {
       </div>
 
       <div className="container">
-        <div className="py-28 bg-black rounded-3xl flex flex-col gap-6 items-center justify-center">
-          <h2 className="font-bold text-white text-[56px]">
+        <div className="p-6 text-center md:text-left md:py-28 bg-black rounded-3xl flex flex-col gap-6 items-center justify-center">
+          <h2 className="font-bold text-white leading-tight text-4xl md:text-[56px]">
             Engage without limits
           </h2>
-          <p className="text-white text-sm">
+          <p className="text-white text-base">
             Join a growing community and talk directly with your favorites
             creators
           </p>
