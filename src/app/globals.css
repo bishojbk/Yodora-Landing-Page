@@ -23,9 +23,21 @@
   display: grid;
   column-gap: 1.5rem;
 }
+
 .image-section-top {
   grid-template-columns: repeat(2, 1fr);
 }
 .image-section-bottom {
+  grid-template-columns: 1fr 2fr;
+}
+
+ul,
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+.footer {
+  display: grid;
   grid-template-columns: 1fr 2fr;
 }

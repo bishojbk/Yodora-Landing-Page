@@ -3,6 +3,9 @@ import Image from "next/image";
 import Image1 from "@/app/assets/images/img-card.png";
 import Image2 from "@/app/assets/images/img-card (1).png";
 import Image3 from "@/app/assets/images/img-card (2).png";
+import Man from "@/app/assets/svgs/man";
+import Girl from "@/app/assets/svgs/girl";
+import Woman from "@/app/assets/svgs/woman";
 
 interface FlexContainerProps {
   quantity: string;
@@ -34,6 +37,10 @@ const Marketplace = () => {
           <Image src={Image1} alt="image"></Image>
           <Image src={Image2} alt="image"></Image>
           <Image src={Image3} alt="image"></Image>
+
+          {/* <Man />
+          <Girl />
+          <Woman /> */}
         </div>
 
         <div className="flex justify-between items-center">

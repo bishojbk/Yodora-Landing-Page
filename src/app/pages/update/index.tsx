@@ -104,14 +104,14 @@ const UpdateSection = () => {
               <span>Set alarm</span>
             </div>
 
-            <div className="flex items-center gap-2 bg-[#4e4e4e] px-3 py-2 rounded-lg text-white text-sm ">
+            <div className="flex items-center gap-2 bg-[#4e4e4e] px-3 py-2 rounded-lg text-white text-sm cursor-pointer">
               <span className="text-lg">
                 <IoPersonAddOutline />
               </span>
               <span>Add People</span>
             </div>
 
-            <div className="flex items-center border-2 border-black gap-1 bg-white px-3 py-[6px] rounded-lg text-black text-sm ">
+            <div className="flex items-center border-2 border-black gap-1 bg-white px-3 py-[6px] rounded-lg text-black text-sm cursor-pointer">
               <span className="text-xl">
                 <RxExit />
               </span>
@@ -121,9 +121,9 @@ const UpdateSection = () => {
 
           <div className="relative">
             <Image
-              src={KAAN}
+              src={Cole}
               alt="image"
-              className="rounded-lg h-44 object-cover"
+              className="rounded-lg h-48 object-cover"
             />
 
             <div className="absolute bottom-2 right-2 text-xl z-50 flex gap-2 items-center">
