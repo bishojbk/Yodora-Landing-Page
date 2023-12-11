@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import Logo from "@/app/assets/logo";
+import { motion } from "framer-motion";
 import Facebook from "@/app/assets/svgs/facebook";
 import Twitter from "@/app/assets/svgs/twitter";
 import Instagram from "@/app/assets/svgs/instagram";
@@ -27,7 +29,12 @@ const FooterSection = () => {
     );
   };
   return (
-    <footer className="bg-white py-6  md:py-16">
+    <motion.footer
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      className="bg-[#ffffff] md:bg-white py-6  md:py-16"
+    >
       <div className="container">
         <div className="footer">
           <div className="hidden md:flex flex-col gap-16">
@@ -77,7 +84,7 @@ const FooterSection = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

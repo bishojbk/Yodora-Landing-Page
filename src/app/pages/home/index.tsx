@@ -2,12 +2,12 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="bg-white md:h-screen">
+    <section className="bg-[#ffffff] md:bg-white md:h-screen">
       <div className="container">
         <div className="hero md:pt-32 md:gap-96">
-          <h1 className="text-4xl md:text-7xl font-bold leading-tight">
-            Learn from your favorite creators
-            <br /> about <span className="text-orange">fantasy reports</span>
+          <h1 className="text-4xl  md:text-[72px] font-bold leading-tight">
+            Learn from your favorite creators about
+            <span className="text-orange"> fantasy reports</span>
           </h1>
 
           <div className="relative mt-[-26px] md:mt-0 flex items-center justify-center border-2 border-black rounded-full h-[102px] w-[102px] md:h-[204px] md:w-[204px]">

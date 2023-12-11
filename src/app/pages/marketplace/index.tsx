@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Image1 from "@/app/assets/images/img-card.png";
@@ -6,6 +7,7 @@ import Image3 from "@/app/assets/images/img-card (2).png";
 import Man from "@/app/assets/svgs/man";
 import Girl from "@/app/assets/svgs/girl";
 import Woman from "@/app/assets/svgs/woman";
+import { motion } from "framer-motion";
 
 interface FlexContainerProps {
   quantity: string;
@@ -25,7 +27,12 @@ const FlexContainer = (props: FlexContainerProps) => {
 
 const Marketplace = () => {
   return (
-    <section className="bg-black pt-96 md:pt-[446px] md:pb-[108px]">
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="bg-black pt-16 mt-[67px] md:mt-0 md:pt-[446px] md:pb-[108px]"
+    >
       <div className="container flex flex-col gap-12 md:gap-[116px]">
         <h2 className="text-4xl md:text-[64px] font-bold text-white m-0 leading-tight">
           <span className="text-orange">Get direct</span>
@@ -61,7 +68,7 @@ const Marketplace = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

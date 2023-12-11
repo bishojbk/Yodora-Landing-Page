@@ -1,5 +1,8 @@
-import React from "react";
+"use client";
 
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import Engagement from "@/app/assets/svgs/engagment";
 import Autonomy from "@/app/assets/svgs/autonomy";
 import Free from "@/app/assets/svgs/free";
@@ -12,24 +15,43 @@ interface GridSectionProps {
 }
 
 const CreatorSection = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
+
+  const animationVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   const GridSection = ({
     svg: SvgComponent,
     header,
     content,
   }: GridSectionProps) => {
     return (
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 items-center md:items-start">
         <SvgComponent />
         <span className="text-2xl md:text-3xl text-black font-bold">
           {header}
         </span>
-        <p className="text-base text-black w-9/12">{content}</p>
+        <p className="text-base text-black w-9/12 text-center md:text-left">
+          {content}
+        </p>
       </div>
     );
   };
 
   return (
-    <section className="bg-white">
+    <motion.section
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={animationVariants}
+      transition={{ duration: 1 }}
+      className="bg-[#ffffff] md:bg-white"
+    >
       <div className="container">
         <div className="flex flex-col md:flex-row gap-8 md:gap-24 md:justify-between md:py-16">
           <div className="flex flex-col gap-6">
@@ -50,7 +72,7 @@ const CreatorSection = () => {
             </button>
           </div>
 
-          <div className="flex flex-col gap-y-12 md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-20">
+          <div className="flex flex-col gap-y-12 items-center justify-center md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-20">
             <GridSection
               svg={Engagement}
               header="Engagement"
@@ -93,7 +115,7 @@ const CreatorSection = () => {
           </button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

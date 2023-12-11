@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "@/app/assets/logo";
+import { motion } from "framer-motion";
 import { RxCross1 } from "react-icons/rx";
 import HamburgerMenu from "@/app/assets/svgs/hamburger";
 
@@ -24,8 +25,13 @@ const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <header className="bg-white relative">
-      <div className="container absolute left-20">
+    <motion.header
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="bg-[#ffffff] md:bg-white relative"
+    >
+      <div className="container absolute md:left-20">
         <div className="hidden md:flex justify-between items-center">
           <div className="flex gap-10 items-center">
             <Logo />
@@ -68,7 +74,7 @@ const Header = () => {
 
         <div
           className={`absolute right-0 left-0 top-0 z-20 bg-[#fff] h-screen ${
-            isMenuOpen ? "translate-x-0" : "translate-x-full"
+            isMenuOpen ? "translate-y-0" : "translate-y-[-100vh]"
           } ${isMenuOpen ? "overflow-hidden" : ""}
           transition duration-700`}
         >
@@ -93,7 +99,7 @@ const Header = () => {
           </ul>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
