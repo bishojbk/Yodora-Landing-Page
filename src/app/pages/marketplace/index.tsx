@@ -1,17 +1,19 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import Image1 from "@/app/assets/images/img-card.png";
-import Image2 from "@/app/assets/images/img-card (1).png";
-import Image3 from "@/app/assets/images/img-card (2).png";
-import Man from "@/app/assets/svgs/man";
-import Girl from "@/app/assets/svgs/girl";
-import Woman from "@/app/assets/svgs/woman";
+import Image1 from "@/app/assets/images/eminem.png";
+import Image2 from "@/app/assets/images/jimmy.jpg";
+import Image3 from "@/app/assets/images/orton.jpg";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 interface FlexContainerProps {
   quantity: string;
   post: string;
+}
+interface ImageContainerProps {
+  source: any;
+  name: string;
 }
 
 const FlexContainer = (props: FlexContainerProps) => {
@@ -25,11 +27,39 @@ const FlexContainer = (props: FlexContainerProps) => {
   );
 };
 
+const ImageContainer = (props: ImageContainerProps) => {
+  return (
+    <div className="relative">
+      <Image
+        src={props.source}
+        alt="image"
+        className="object-cover w-[392px] h-[522px] rounded-3xl"
+      ></Image>
+
+      <span className="absolute left-4 bottom-6 bg-black rounded-sm px-2 text-white">
+        {props.name}
+      </span>
+    </div>
+  );
+};
+
 const Marketplace = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.4,
+  });
+
+  const animationVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={animationVariants}
       transition={{ duration: 1 }}
       className="bg-black pt-16 mt-[67px] md:mt-0 md:pt-[446px] md:pb-[108px]"
     >
@@ -41,13 +71,9 @@ const Marketplace = () => {
         </h2>
 
         <div className="flex flex-col gap-6 md:flex md:flex-row md:justify-between">
-          <Image src={Image1} alt="image"></Image>
-          <Image src={Image2} alt="image"></Image>
-          <Image src={Image3} alt="image"></Image>
-
-          {/* <Man />
-          <Girl />
-          <Woman /> */}
+          <ImageContainer source={Image1} name="Eminem" />
+          <ImageContainer source={Image2} name="James" />
+          <ImageContainer source={Image3} name="Randal" />
         </div>
 
         <div className="flex flex-col md:flex-row md:justify-between items-center">

@@ -11,8 +11,8 @@ import { IoPersonAddOutline } from "react-icons/io5";
 import { RxExit } from "react-icons/rx";
 import { IoVideocamOffOutline } from "react-icons/io5";
 import { CiMicrophoneOff } from "react-icons/ci";
+import ChatSection from "@/app/components/chat";
 import { MdCloseFullscreen } from "react-icons/md";
-import { FiSend } from "react-icons/fi";
 import UpdatePage from "@/app/assets/images/update.png";
 
 interface FigureSectionProps {
@@ -20,10 +20,6 @@ interface FigureSectionProps {
   height: string;
   width: string;
   name: string;
-}
-
-interface TextSectionProps {
-  text: string;
 }
 
 const FigureSection = ({ source, height, width, name }: FigureSectionProps) => {
@@ -41,16 +37,10 @@ const FigureSection = ({ source, height, width, name }: FigureSectionProps) => {
   );
 };
 
-const TextSection = ({ text }: TextSectionProps) => {
-  return (
-    <div className="text-sm w-[65%] bg-gray-200 rounded-lg p-2">{text}</div>
-  );
-};
-
 const UpdateSection = () => {
   return (
     <div>
-      <section className="hidden md:block container left-14 absolute top-[57%] z-10">
+      <section className="hidden md:block container left-14 absolute top-[65%] z-10">
         <div className="border-[16px] border-black bg-white px-8 pt-3 pb-8 rounded-[50px] update">
           <div className="flex flex-col gap-8 rounded-[36px]">
             <div className="flex gap-3 items-center">
@@ -143,41 +133,7 @@ const UpdateSection = () => {
               </div>
             </div>
 
-            <TextSection text="I am coming already. I was at the tub." />
-
-            <div className="grid gap-3">
-              <div className="flex gap-3 items-center">
-                <Image
-                  src={Eminem}
-                  alt="eminem"
-                  className="w-10 h-10 rounded-full"
-                />
-                <span className="text-black text-sm">Marshall Mathers</span>
-                <span className="text-black text-xs opacity-60">17:42</span>
-              </div>
-
-              <TextSection text="Hello there. How have you been?" />
-              <TextSection text="Your presence alone would make angels question their perfection." />
-
-              <div className="flex flex-col gap-2 items-end">
-                <span className="text-black text-xs opacity-60">17:42</span>
-                <TextSection text="GTA 6 is coming next year😍. Excited!!!" />
-              </div>
-
-              <div className="p-2 rounded-lg flex items-center gap-2 w-full bg-#fff shadow-sm">
-                <span className="text-lg bg-gray-200 flex items-center justify-center rounded-lg py-1 px-3 cursor-pointer">
-                  +
-                </span>
-                <input
-                  title="Enter message"
-                  className="w-full p-3 bg-transparent border-none outline-none placeholder:opacity-60 text-sm"
-                  placeholder="Type a message"
-                ></input>
-                <div className="text-lg bg-[#4e4e4e] rounded-lg py-2 px-3 text-white cursor-pointer">
-                  <FiSend />
-                </div>
-              </div>
-            </div>
+            <ChatSection />
           </div>
         </div>
       </section>

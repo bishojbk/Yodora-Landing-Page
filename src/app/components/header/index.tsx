@@ -5,14 +5,37 @@ import Link from "next/link";
 import Logo from "@/app/assets/logo";
 import { motion } from "framer-motion";
 import { RxCross1 } from "react-icons/rx";
+import SignIn from "@/app/components/signin";
+import SignUp from "@/app/components/signup";
+import { useInView } from "react-intersection-observer";
 import HamburgerMenu from "@/app/assets/svgs/hamburger";
 
 const Header = () => {
   const ListItems = ["Explore", "Company", "Support"];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
   const handleClickHamMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleClickSignIn = () => {
+    setIsSignInModalOpen(!isSignInModalOpen);
+  };
+
+  const handleClickSignUp = () => {
+    setIsSignUpModalOpen(!isSignUpModalOpen);
+  };
+
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.4,
+  });
+
+  const animationVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
   };
 
   useEffect(() => {
@@ -26,13 +49,15 @@ const Header = () => {
 
   return (
     <motion.header
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="bg-[#ffffff] md:bg-white relative"
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={animationVariants}
+      transition={{ duration: 1 }}
+      className="bg-[#ffffff] md:bg-white"
     >
-      <div className="container absolute md:left-20">
-        <div className="hidden md:flex justify-between items-center">
+      <div>
+        <div className="hidden container md:flex justify-between items-center">
           <div className="flex gap-10 items-center">
             <Logo />
             <nav>
@@ -50,12 +75,13 @@ const Header = () => {
           </div>
 
           <div className="flex gap-6 items-center">
-            <Link href="#" className="text-black">
+            <Link href="#" className="text-black" onClick={handleClickSignUp}>
               Become a member
             </Link>
             <button
               title="Sign In"
               className="border border-black py-4 px-8 rounded-full bg-black text-white hover:bg-gray-700"
+              onClick={handleClickSignIn}
             >
               Sign in
             </button>
@@ -86,7 +112,7 @@ const Header = () => {
               <li key={item}>{item}</li>
             ))}
             <li>
-              <Link href="#" className="text-black">
+              <Link href="#" className="text-black" onClick={handleClickSignUp}>
                 Become a member
               </Link>
             </li>
@@ -99,6 +125,8 @@ const Header = () => {
           </ul>
         </div>
       </div>
+      <SignIn isOpen={isSignInModalOpen} onClose={handleClickSignIn} />
+      <SignUp isOpen={isSignUpModalOpen} onClose={handleClickSignUp} />
     </motion.header>
   );
 };

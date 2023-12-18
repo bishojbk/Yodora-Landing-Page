@@ -1,12 +1,11 @@
-"use client";
-
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Engagement from "@/app/assets/svgs/engagment";
 import Autonomy from "@/app/assets/svgs/autonomy";
 import Free from "@/app/assets/svgs/free";
 import Earn from "@/app/assets/svgs/earn";
+import SignUpModal from "@/app/components/signup";
 
 interface GridSectionProps {
   svg: any;
@@ -17,12 +16,19 @@ interface GridSectionProps {
 const CreatorSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 0.4,
   });
 
   const animationVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
+  };
+
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+
+  const handleClickSignUp = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsSignUpModalOpen(!isSignUpModalOpen);
   };
 
   const GridSection = ({
@@ -66,6 +72,7 @@ const CreatorSection = () => {
 
             <button
               title="Become a member"
+              onClick={handleClickSignUp}
               className="border w-44 md:w-56 border-black py-3 px-4 text-sm md:text-base rounded-full bg-black text-white hover:bg-gray-700"
             >
               Become a member
@@ -110,11 +117,14 @@ const CreatorSection = () => {
           <button
             title="Get Started"
             className="border  border-black py-4 px-8 rounded-full bg-orange text-black text-sm hover:bg-[#ff9a56]"
+            onClick={handleClickSignUp}
           >
             Get Started
           </button>
         </div>
       </div>
+
+      <SignUpModal isOpen={isSignUpModalOpen} onClose={handleClickSignUp} />
     </motion.section>
   );
 };

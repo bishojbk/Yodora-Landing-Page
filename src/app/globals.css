@@ -57,3 +57,11 @@ li {
     gap: 2rem;
   }
 }
+
+.social-links:hover svg path {
+  stroke: black;
+}
+
+.social-links:hover:not(.facebook) svg path {
+  stroke-width: 2;
+}

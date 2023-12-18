@@ -1,10 +1,11 @@
-"use client";
 import React from "react";
 import Logo from "@/app/assets/logo";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import Facebook from "@/app/assets/svgs/facebook";
 import Twitter from "@/app/assets/svgs/twitter";
 import Instagram from "@/app/assets/svgs/instagram";
+import Link from "next/link";
 
 interface ListSectionProps {
   header: string;
@@ -13,6 +14,16 @@ interface ListSectionProps {
   listThree: string;
 }
 const FooterSection = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.4,
+  });
+
+  const animationVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   const ListSection = ({
     header,
     listOne,
@@ -30,8 +41,10 @@ const FooterSection = () => {
   };
   return (
     <motion.footer
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={animationVariants}
       transition={{ duration: 1 }}
       className="bg-[#ffffff] md:bg-white py-6  md:py-16"
     >
@@ -41,9 +54,15 @@ const FooterSection = () => {
             <Logo />
 
             <div className="flex gap-3">
-              <Facebook />
-              <Twitter />
-              <Instagram />
+              <Link href="#" className="facebook social-links cursor-pointer">
+                <Facebook />
+              </Link>
+              <Link href="#" className="social-links cursor-pointer">
+                <Twitter />
+              </Link>
+              <Link href="#" className="social-links cursor-pointer">
+                <Instagram />
+              </Link>
             </div>
           </div>
 
