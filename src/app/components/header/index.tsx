@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "@/app/assets/logo";
@@ -34,12 +32,13 @@ const Header = () => {
   });
 
   const animationVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0 },
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0 },
   };
 
   useEffect(() => {
     const html = document.documentElement;
+
     document.body.classList.toggle("overflow-y-hidden", isMenuOpen);
 
     return () => {
@@ -53,7 +52,7 @@ const Header = () => {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={animationVariants}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.7 }}
       className="bg-[#ffffff] md:bg-white"
     >
       <div>
@@ -119,6 +118,7 @@ const Header = () => {
             <button
               title="Sign In"
               className="border border-black py-1 px-4 rounded-full bg-black text-white hover:bg-gray-700"
+              onClick={handleClickSignIn}
             >
               Sign in
             </button>

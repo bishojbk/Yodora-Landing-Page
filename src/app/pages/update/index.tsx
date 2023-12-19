@@ -14,13 +14,7 @@ import { CiMicrophoneOff } from "react-icons/ci";
 import ChatSection from "@/app/components/chat";
 import { MdCloseFullscreen } from "react-icons/md";
 import UpdatePage from "@/app/assets/images/update.png";
-
-interface FigureSectionProps {
-  source: any;
-  height: string;
-  width: string;
-  name: string;
-}
+import { FigureSectionProps } from "@/app/@types/common";
 
 const FigureSection = ({ source, height, width, name }: FigureSectionProps) => {
   return (
@@ -39,7 +33,7 @@ const FigureSection = ({ source, height, width, name }: FigureSectionProps) => {
 
 const UpdateSection = () => {
   return (
-    <div>
+    <>
       <section className="hidden md:block container left-14 absolute top-[65%] z-10">
         <div className="border-[16px] border-black bg-white px-8 pt-3 pb-8 rounded-[50px] update">
           <div className="flex flex-col gap-8 rounded-[36px]">
@@ -87,49 +81,59 @@ const UpdateSection = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-8">
-            <div className="flex gap-7 items-center">
-              <div className="flex items-center gap-2 bg-[#4e4e4e] px-3 py-2 rounded-lg text-white text-sm cursor-pointer">
-                <span className="text-xl">
-                  <IoIosNotificationsOutline />
-                </span>
-                <span>Set alarm</span>
-              </div>
-
-              <div className="flex items-center gap-2 bg-[#4e4e4e] px-3 py-2 rounded-lg text-white text-sm cursor-pointer">
-                <span className="text-lg">
-                  <IoPersonAddOutline />
-                </span>
-                <span>Add People</span>
-              </div>
-
-              <div className="flex items-center border-2 border-black gap-1 bg-white px-3 py-[6px] rounded-lg text-black text-sm cursor-pointer">
-                <span className="text-xl">
-                  <RxExit />
-                </span>
-                <span>Leave reunion</span>
-              </div>
-            </div>
-
-            <div className="relative">
-              <Image
-                src={Cole}
-                alt="image"
-                className="rounded-lg h-48 object-cover"
-              />
-
-              <div className="absolute bottom-2 right-2 text-xl z-50 flex gap-2 items-center">
-                <div className="bg-[white] text-xl px-2 py-1 rounded-lg">
-                  <IoVideocamOffOutline />
+          <div className="flex flex-col gap-0 justify-between">
+            <div className="flex flex-col gap-8">
+              <div className="flex gap-7 items-center">
+                <div className="flex items-center gap-2 bg-[#4e4e4e] px-3 py-2 rounded-lg text-white text-sm cursor-pointer">
+                  <span className="text-xl">
+                    <IoIosNotificationsOutline />
+                  </span>
+                  <span>Set alarm</span>
                 </div>
 
-                <div className="bg-[white] text-xl px-2 py-1 rounded-lg">
-                  <CiMicrophoneOff />
+                <div className="flex items-center gap-2 bg-[#4e4e4e] px-3 py-2 rounded-lg text-white text-sm cursor-pointer">
+                  <span className="text-lg">
+                    <IoPersonAddOutline />
+                  </span>
+                  <span>Add People</span>
                 </div>
 
-                <div className="bg-[white] text-xl px-2 py-1 rounded-lg">
-                  <MdCloseFullscreen />
+                <div className="flex items-center border-2 border-black gap-1 bg-white px-3 py-[6px] rounded-lg text-black text-sm cursor-pointer">
+                  <span className="text-xl">
+                    <RxExit />
+                  </span>
+                  <span>Leave reunion</span>
                 </div>
+              </div>
+
+              <div className="relative">
+                <Image
+                  src={Cole}
+                  alt="image"
+                  className="rounded-lg h-48 object-cover"
+                />
+
+                <div className="absolute bottom-2 right-2 text-xl z-50 flex gap-2 items-center">
+                  <div className="bg-[white] text-xl px-2 py-1 rounded-lg">
+                    <IoVideocamOffOutline />
+                  </div>
+
+                  <div className="bg-[white] text-xl px-2 py-1 rounded-lg">
+                    <CiMicrophoneOff />
+                  </div>
+
+                  <div className="bg-[white] text-xl px-2 py-1 rounded-lg">
+                    <MdCloseFullscreen />
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-3 items-center">
+                <Image
+                  src={Eminem}
+                  alt="eminem"
+                  className="w-10 h-10 rounded-full"
+                />
+                <span className="text-black text-sm">Marshall Mathers</span>
               </div>
             </div>
 
@@ -140,7 +144,7 @@ const UpdateSection = () => {
       <div className="md:hidden absolute top-[60%] px-4">
         <Image src={UpdatePage} alt="UpdateSection"></Image>
       </div>
-    </div>
+    </>
   );
 };
 

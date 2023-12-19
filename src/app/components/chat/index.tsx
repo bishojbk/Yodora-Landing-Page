@@ -1,14 +1,8 @@
+"use client";
 import React, { useState } from "react";
-import Image from "next/image";
 import { FiSend } from "react-icons/fi";
-import Eminem from "@/app/assets/images/eminem.png";
-
-interface TextSectionProps {
-  text: string;
-  side: boolean;
-}
-
-const MAX_MESSAGES = 4;
+import { TextSectionProps } from "@/app/@types/common";
+import { MAX_MESSAGES } from "@/app/utils/common";
 
 const Chat = () => {
   const [message, setMessage] = useState("");
@@ -17,7 +11,7 @@ const Chat = () => {
   );
   const [side, setSide] = useState(true);
 
-  const GetCurrentTime = () => {
+  const getCurrentTime = () => {
     const Time = new Date();
     const currentHour = Time.getHours();
     const currentMinute = Time.getMinutes();
@@ -30,10 +24,25 @@ const Chat = () => {
   };
 
   const TextArea = ({ text, side }: TextSectionProps) => {
+    const splitMessage = (message: any, chunkSize: any) => {
+      const regex = new RegExp(`.{1,${chunkSize}}`, "g");
+      return message.match(regex) || [];
+    };
+
+    const chunks = splitMessage(text, 46);
+
     return (
-      <div className={`flex flex-col gap-2 items-${side ? "start" : "end"}`}>
-        <GetCurrentTime />
-        <div className="text-sm w-[65%] bg-gray-200 rounded-lg p-2">{text}</div>
+      <div>
+        <div className={`flex flex-col gap-2 items-${side ? "end" : "start"}`}>
+          {getCurrentTime()}
+          <div className="text-sm bg-gray-200 rounded-lg p-2">
+            {chunks.map((chunk: any, index: any) => (
+              <p key={index} className="whitespace-pre">
+                {chunk}
+              </p>
+            ))}
+          </div>
+        </div>
       </div>
     );
   };
@@ -57,18 +66,14 @@ const Chat = () => {
         ...prevMessages,
         { text: message, side: side },
       ]);
+
       setMessage("");
     }
   };
 
   return (
     <div>
-      <div className="grid gap-3">
-        <div className="flex gap-3 items-center">
-          <Image src={Eminem} alt="eminem" className="w-10 h-10 rounded-full" />
-          <span className="text-black text-sm">Marshall Mathers</span>
-        </div>
-
+      <div className="flex flex-col gap-2">
         {messages.slice(-MAX_MESSAGES).map((msg, index) => (
           <TextArea key={index} text={msg.text} side={msg.side} />
         ))}

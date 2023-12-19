@@ -21,7 +21,7 @@ const SignInModal = ({ isOpen, onClose }: any) => {
           transition={{ duration: 0.5 }}
           className="fixed top-0 left-0 right-0 bottom-0 z-50 h-screen flex items-center justify-center bg-[#000] bg-opacity-60"
         >
-          <div className="bg-white relative w-3/12 p-8 rounded-md gap-6 flex flex-col">
+          <div className="bg-white relative md:w-3/12 p-8 rounded-md gap-6 flex flex-col">
             <h2 className="text-3xl mb-4 text-center ">Sign In</h2>
 
             <form className="grid gap-6">

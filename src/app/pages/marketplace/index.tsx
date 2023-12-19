@@ -1,20 +1,13 @@
-"use client";
 import React from "react";
 import Image from "next/image";
 import Image1 from "@/app/assets/images/eminem.png";
 import Image2 from "@/app/assets/images/jimmy.jpg";
 import Image3 from "@/app/assets/images/orton.jpg";
+import ButtonToTop from "@/app/components/button-to-top";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
-interface FlexContainerProps {
-  quantity: string;
-  post: string;
-}
-interface ImageContainerProps {
-  source: any;
-  name: string;
-}
+import { FlexContainerProps } from "@/app/@types/common";
+import { ImageContainerProps } from "@/app/@types/common";
 
 const FlexContainer = (props: FlexContainerProps) => {
   return (
@@ -46,7 +39,7 @@ const ImageContainer = (props: ImageContainerProps) => {
 const Marketplace = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.4,
+    threshold: 0.2,
   });
 
   const animationVariants = {
@@ -94,6 +87,7 @@ const Marketplace = () => {
           </div>
         </div>
       </div>
+      <ButtonToTop />
     </motion.section>
   );
 };

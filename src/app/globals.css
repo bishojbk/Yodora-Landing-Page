@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  overflow-x: hidden;
+}
+
 .container {
   margin: 0px auto;
   padding: 32px 1rem;
