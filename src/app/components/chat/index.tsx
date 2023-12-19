@@ -33,9 +33,9 @@ const Chat = () => {
 
     return (
       <div>
-        <div className={`flex flex-col gap-2 items-${side ? "end" : "start"}`}>
+        <div className={`flex flex-col gap-2 items-end`}>
           {getCurrentTime()}
-          <div className="text-sm bg-gray-200 rounded-lg p-2">
+          <div className="text-sm w-9/12 bg-gray-200 rounded-lg p-2">
             {chunks.map((chunk: any, index: any) => (
               <p key={index} className="whitespace-pre">
                 {chunk}
