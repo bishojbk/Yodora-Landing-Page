@@ -2,6 +2,14 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
+import type { ReactNode } from "react";
+
+export type LayoutProps = {
+  children: ReactNode;
+  types: ReactNode;
+  params?: any;
+};
+
 const inter = Poppins({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
