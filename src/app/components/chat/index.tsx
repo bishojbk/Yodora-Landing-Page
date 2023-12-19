@@ -29,7 +29,7 @@ const Chat = () => {
       return message.match(regex) || [];
     };
 
-    const chunks = splitMessage(text, 46);
+    const chunks = splitMessage(text, 36);
 
     return (
       <div>
